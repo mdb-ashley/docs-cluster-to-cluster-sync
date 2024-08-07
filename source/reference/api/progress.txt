@@ -64,6 +64,15 @@ Behavior
 
 - The endpoint does not auto-refresh. To get updated status, call the
   ``progress`` endpoint again.
+  
+  .. include:: /includes/fact-restart-resume-delay.rst
+
+Endpoint Protection
+~~~~~~~~~~~~~~~~~~~
+
+.. |endpoint| replace:: ``progress``
+.. include:: /includes/fact-api-endpoint
+
 
 - Calls to ``/progress`` before ``mongosync`` reaches the collection
   copy phase return 0 for ``estimatedCopiedBytes`` and 1 for 

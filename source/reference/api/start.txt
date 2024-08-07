@@ -38,7 +38,27 @@ permissions to start the synchronization.
 Multiple ``mongosync`` Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that you use the configured ``mongosync`` user in the connection 
+   .. code-block:: javascript
+   
+      db.adminCommand( {
+         createRole: "reverseSync",
+         privileges: [ {
+             resource: { cluster: true },
+             actions: [ "setUserWriteBlockMode", "bypassWriteBlockingMode" ]
+         } ],
+         roles: []
+      } )
+ 
+#. To grant the custom role to the ``mongosync`` user, use the :dbcommand:`grantRolesToUser` command:
+
+   .. code-block:: javascript
+
+      db.adminCommand( {
+         grantRolesToUser: "mongosync-user",
+         roles: [ { role: "reverseSync", db: "admin" } ]
+      } )
+
+Ensure that you use this configured ``mongosync`` user in the connection 
 strings for the :setting:`cluster0` or :setting:`cluster1` settings when
 you start ``mongosync``. 
 

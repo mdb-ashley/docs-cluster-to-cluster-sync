@@ -127,7 +127,7 @@
 
    * - ``coordinatorID``
      - string
-     - Identifier string for the coordinator instance.
+     - The identifier string for the coordinator instance.
 
        - When ``mongosync`` is coordinated by another instance, this field shows
          the identifier string for the coordinator instance.
